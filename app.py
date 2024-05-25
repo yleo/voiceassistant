@@ -36,7 +36,7 @@ if st.button("Stop and Save Recording"):
         if audio_processor and len(audio_processor.audio_buffer) > 0:
             # Concatenate all audio chunks
             audio_data = np.concatenate(audio_processor.audio_buffer, axis=0)
-            audio_processor.audio_buffer = []  # Clear the buffer
+            
 
             # Save the recording to a temporary file
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".wav")
@@ -44,6 +44,7 @@ if st.button("Stop and Save Recording"):
 
             st.audio(temp_file.name, format='audio/wav')
             st.success(f"Recording saved to {temp_file.name}")
+            audio_processor.audio_buffer = []  # Clear the buffer
         else:
             st.warning("No audio recorded yet")
     else:
