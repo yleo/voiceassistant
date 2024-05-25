@@ -22,32 +22,52 @@ class AudioProcessor(AudioProcessorBase):
 # Streamlit app
 st.title("Voice Recorder")
 
-# Initialize the webrtc streamer
-webrtc_ctx = webrtc_streamer(
-    key="example", 
-    mode=WebRtcMode.SENDONLY,  # Change mode to SENDONLY to avoid playback
-    client_settings=WEBRTC_CLIENT_SETTINGS, 
-    audio_processor_factory=AudioProcessor
-)
+# Initialize session state
+if "webrtc_ctx" not in st.session_state:
+    st.session_state["webrtc_ctx"] = None
+if "recording" not in st.session_state:
+    st.session_state["recording"] = False
 
-if st.button("Stop and Save Recording"):
-    if webrtc_ctx.state.playing:
-        audio_processor = webrtc_ctx.audio_processor
+# Function to start recording
+def start_recording():
+    st.session_state["webrtc_ctx"] = webrtc_streamer(
+        key="example", 
+        mode=WebRtcMode.SENDONLY,  # Change mode to SENDONLY to avoid playback
+        client_settings=WEBRTC_CLIENT_SETTINGS, 
+        audio_processor_factory=AudioProcessor
+    )
+    st.session_state["recording"] = True
+
+# Function to stop recording and save the file
+def stop_recording():
+    if st.session_state["webrtc_ctx"] and st.session_state["webrtc_ctx"].state.playing:
+        audio_processor = st.session_state["webrtc_ctx"].audio_processor
         if audio_processor and len(audio_processor.audio_buffer) > 0:
             # Concatenate all audio chunks
             audio_data = np.concatenate(audio_processor.audio_buffer, axis=0)
             
-
             # Save the recording to a temporary file
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".wav")
             wavfile.write(temp_file.name, 44100, audio_data)
 
             st.audio(temp_file.name, format='audio/wav')
             st.success(f"Recording saved to {temp_file.name}")
-            audio_processor.audio_buffer = []  # Clear the buffer
+            
+            # Clear the buffer after saving
+            audio_processor.audio_buffer = []
         else:
             st.warning("No audio recorded yet")
+        st.session_state["webrtc_ctx"].stop()
+        st.session_state["recording"] = False
     else:
-        st.warning("WebRTC is not playing")
+        st.warning("Recording has not started or already stopped.")
 
-st.caption("Click 'Stop and Save Recording' to save your recording.")
+# Display buttons and handle actions
+if not st.session_state["recording"]:
+    if st.button("Record"):
+        start_recording()
+else:
+    if st.button("Stop"):
+        stop_recording()
+
+st.caption("Click 'Record' to start recording and 'Stop' to save your recording.")
