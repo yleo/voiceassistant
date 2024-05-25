@@ -27,6 +27,8 @@ if "webrtc_ctx" not in st.session_state:
     st.session_state["webrtc_ctx"] = None
 if "recording" not in st.session_state:
     st.session_state["recording"] = False
+if "audio_file" not in st.session_state:
+    st.session_state["audio_file"] = None
 
 # Function to start recording
 def start_recording():
@@ -50,7 +52,7 @@ def stop_recording():
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".wav")
             wavfile.write(temp_file.name, 44100, audio_data)
 
-            st.audio(temp_file.name, format='audio/wav')
+            st.session_state["audio_file"] = temp_file.name
             st.success(f"Recording saved to {temp_file.name}")
             
             # Clear the buffer after saving
@@ -63,11 +65,15 @@ def stop_recording():
         st.warning("Recording has not started or already stopped.")
 
 # Display buttons and handle actions
-if not st.session_state["recording"]:
-    if st.button("Record"):
-        start_recording()
-else:
+if st.session_state["recording"]:
     if st.button("Stop"):
         stop_recording()
+else:
+    if st.button("Record"):
+        start_recording()
+
+# Display the audio player if a file is available
+if st.session_state["audio_file"]:
+    st.audio(st.session_state["audio_file"], format='audio/wav')
 
 st.caption("Click 'Record' to start recording and 'Stop' to save your recording.")
