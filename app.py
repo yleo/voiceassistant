@@ -17,7 +17,7 @@ class AudioProcessor(AudioProcessorBase):
     def recv(self, frame):
         audio = frame.to_ndarray()
         self.audio_buffer.append(audio)
-        return frame  # Return the frame to ensure it's processed but not played back
+        return frame
 
 # Streamlit app
 st.title("Voice Recorder")
@@ -34,34 +34,34 @@ if "audio_file" not in st.session_state:
 def start_recording():
     st.session_state["webrtc_ctx"] = webrtc_streamer(
         key="example", 
-        mode=WebRtcMode.SENDONLY,  # Change mode to SENDONLY to avoid playback
+        mode=WebRtcMode.SENDONLY,
         client_settings=WEBRTC_CLIENT_SETTINGS, 
         audio_processor_factory=AudioProcessor
     )
     st.session_state["recording"] = True
-    st.session_state["audio_file"] = None  # Reset the audio file path when starting a new recording
+    st.session_state["audio_file"] = None
+    st.experimental_rerun()
 
 # Function to stop recording and save the file
 def stop_recording():
     if st.session_state["webrtc_ctx"] and st.session_state["webrtc_ctx"].state.playing:
         audio_processor = st.session_state["webrtc_ctx"].audio_processor
         if audio_processor and len(audio_processor.audio_buffer) > 0:
-            # Concatenate all audio chunks
             audio_data = np.concatenate(audio_processor.audio_buffer, axis=0)
             
-            # Save the recording to a temporary file
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".wav")
             wavfile.write(temp_file.name, 44100, audio_data)
 
             st.session_state["audio_file"] = temp_file.name
             st.success(f"Recording saved to {temp_file.name}")
-            
-            # Clear the buffer after saving
+
             audio_processor.audio_buffer = []
         else:
             st.warning("No audio recorded yet")
+        
         st.session_state["webrtc_ctx"].stop()
         st.session_state["recording"] = False
+        st.experimental_rerun()
     else:
         st.warning("Recording has not started or already stopped.")
 
