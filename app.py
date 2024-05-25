@@ -39,6 +39,7 @@ def start_recording():
         audio_processor_factory=AudioProcessor
     )
     st.session_state["recording"] = True
+    st.session_state["audio_file"] = None  # Reset the audio file path when starting a new recording
 
 # Function to stop recording and save the file
 def stop_recording():
