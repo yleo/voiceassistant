@@ -17,13 +17,15 @@ class AudioProcessor(AudioProcessorBase):
     def recv(self, frame):
         audio = frame.to_ndarray()
         self.audio_buffer.append(audio)
-        return frame
+        return frame  # Return the frame to ensure it's processed but not played back
 
 # Streamlit app
 st.title("Voice Recorder")
+
+# Initialize the webrtc streamer
 webrtc_ctx = webrtc_streamer(
     key="example", 
-    mode=WebRtcMode.SENDRECV, 
+    mode=WebRtcMode.SENDONLY,  # Change mode to SENDONLY to avoid playback
     client_settings=WEBRTC_CLIENT_SETTINGS, 
     audio_processor_factory=AudioProcessor
 )
