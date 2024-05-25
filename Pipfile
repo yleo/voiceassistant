@@ -8,6 +8,8 @@ streamlit = "*"
 sounddevice = "*"
 numpy = "*"
 scipy = "*"
+streamlit-webrtc = "*"
+pydub = "*"
 
 [dev-packages]
 
