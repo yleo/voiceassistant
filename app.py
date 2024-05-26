@@ -54,7 +54,7 @@ if audio_bytes:
         messages=[
             {
                 "role": "user",
-                "content": "Answer to this query in less thant 20 words as you are a kind voice assistant. The query: "+result,
+                "content": "Answer to this query in less thant 20 words as you are a kind voice assistant. The query: "+result['test'],
             }
         ],
         model="llama3-8b-8192",
