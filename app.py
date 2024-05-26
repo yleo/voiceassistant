@@ -26,7 +26,7 @@ def send_to_api(file_path):
         return {"error": f"Failed to get a valid response: {response.status_code}, {response.text}"}
 
 # Record audio
-st.title("Voice Recorder O")
+st.title("Voice Recorder X")
 audio_bytes = audio_recorder()
 
 result = ""
@@ -54,7 +54,7 @@ if audio_bytes:
         messages=[
             {
                 "role": "user",
-                "content": "Answer to this query in less thant 20 words as you are a kind voice assistant. The query: "+result['test'],
+                "content": "Answer to this query in less thant 20 words as you are a kind voice assistant. The query: Who is instein?",
             }
         ],
         model="llama3-8b-8192",
