@@ -42,4 +42,20 @@ if audio_bytes:
     
     st.write("API Response:", result)
 
+from groq import Groq
 
+client = Groq(
+    api_key='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',
+)
+
+chat_completion = client.chat.completions.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "Answer to this query in less thant 20 words as you are a kind voice assistant. The query: "+result,
+        }
+    ],
+    model="llama3-8b-8192",
+)
+
+print(chat_completion.choices[0].message.content)
