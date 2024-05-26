@@ -24,7 +24,7 @@ def send_to_api(file_path):
         return {"error": f"Failed to get a valid response: {response.status_code}, {response.text}"}
 
 # Record audio
-st.title("Voice Recorder")
+st.title("Voice Recorder c")
 audio_bytes = audio_recorder()
 
 if audio_bytes:
@@ -41,3 +41,5 @@ if audio_bytes:
         result = send_to_api(temp_file_path)
     
     st.write("API Response:", result)
+
+
