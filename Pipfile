@@ -11,6 +11,7 @@ scipy = "*"
 streamlit-webrtc = "*"
 pydub = "*"
 audio-recorder-streamlit = "*"
+groq = "*"
 
 [dev-packages]
 
