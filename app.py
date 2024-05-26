@@ -4,6 +4,8 @@ import requests
 import tempfile
 import base64
 
+from groq import Groq
+
 # Hugging Face API endpoint and headers
 endpoint_url = "https://v2owhjkjdnkfhp30.us-east-1.aws.endpoints.huggingface.cloud"
 headers = {
@@ -27,6 +29,8 @@ def send_to_api(file_path):
 st.title("Voice Recorder P")
 audio_bytes = audio_recorder()
 
+result = ""
+
 if audio_bytes:
     # Save the recorded audio to a temporary file
     with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_file:
@@ -42,20 +46,21 @@ if audio_bytes:
     
     st.write("API Response:", result)
 
-from groq import Groq
+    client = Groq(
+        api_key='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',
+    )
 
-client = Groq(
-    api_key='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',
-)
+    chat_completion = client.chat.completions.create(
+        messages=[
+            {
+                "role": "user",
+                "content": "Answer to this query in less thant 20 words as you are a kind voice assistant. The query: "+result,
+            }
+        ],
+        model="llama3-8b-8192",
+    )
 
-chat_completion = client.chat.completions.create(
-    messages=[
-        {
-            "role": "user",
-            "content": "Answer to this query in less thant 20 words as you are a kind voice assistant. The query: "+result,
-        }
-    ],
-    model="llama3-8b-8192",
-)
+    st.write("API Response:", chat_completion.choices[0].message.content)
 
-print(chat_completion.choices[0].message.content)
+
+
