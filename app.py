@@ -61,8 +61,8 @@ def get_llm_response(query_text):
 def generate_audio_response(answer):
 
     # Define the local paths for the model and configuration files
-    model_path = "en_US-lessac-medium.onnx"
-    config_path = "en_US-lessac-medium.onnx.json"
+    model_path = "fr_FR-siwis-low.onnx"
+    config_path = "fr_FR-siwis-low.onnx.json"
     output_file = "output.wav"
 
     # Run Piper-TTS using subprocess with local model and config files
