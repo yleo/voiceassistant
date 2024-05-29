@@ -3,6 +3,7 @@ from audio_recorder_streamlit import audio_recorder
 import requests
 import requests
 import tempfile
+import json
 import numpy as np
 import wave
 import io
@@ -29,7 +30,7 @@ def send_to_api(file_path):
         return {"error": f"Failed to get a valid response: {response.status_code}, {response.text}"}
 
 # Record audio
-st.title("Voice Recorder XX")
+st.title("Voice Recorder I")
 audio_bytes = audio_recorder()
 
 result = ""
