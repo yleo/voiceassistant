@@ -30,7 +30,7 @@ def send_to_api(file_path):
         return {"error": f"Failed to get a valid response: {response.status_code}, {response.text}"}
 
 # Record audio
-st.title("Voice Recorder I")
+st.title("Voice Recorder 10")
 audio_bytes = audio_recorder()
 
 result = ""
