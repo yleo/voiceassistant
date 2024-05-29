@@ -10,7 +10,7 @@ import subprocess
 from groq import Groq
 
 # Global Variables for API Endpoints and Tokens
-HUGGING_FACE_API_ENDPOINT = "https://v2owhjkjdnkfhp30.us-east-1.aws.endpoints.huggingface.cloud"
+HUGGING_FACE_API_ENDPOINT = "https://ih8dpnlow2junbl4.us-east-1.aws.endpoints.huggingface.cloud"
 LLM_API_KEY = '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'
 HUGGING_FACE_AUDIO_ENDPOINT = "https://yh2m49z3xrn07uzh.us-east-1.aws.endpoints.huggingface.cloud"
 HUGGING_FACE_API_TOKEN = "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"
@@ -50,7 +50,7 @@ def get_llm_response(query_text):
         messages=[
             {
                 "role": "user",
-                "content": f"Answer to this query in less than 20 words as you are a kind voice assistant. The query: {query_text}",
+                "content": f"Répondez à cette question en moins de 20 mots en tant que gentil assistant vocal. La question:  {query_text}",
             }
         ],
         model="llama3-8b-8192",
