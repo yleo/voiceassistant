@@ -86,7 +86,7 @@ def generate_audio_response(answer):
 
 # Main function
 def main():
-    st.title("Voice Recorder 3")
+    st.title("Voice Recorder 4")
     audio_bytes = audio_recorder()
     result = ""
 
