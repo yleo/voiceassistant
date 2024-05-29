@@ -6,6 +6,7 @@ import json
 import numpy as np
 import wave
 import io
+import subprocess
 from groq import Groq
 
 # Global Variables for API Endpoints and Tokens
@@ -58,20 +59,34 @@ def get_llm_response(query_text):
 
 # Function to generate audio response
 def generate_audio_response(answer):
-    payload = {
-        "inputs": answer,
-        "voice_description": "A male speaker with a low-pitched voice speaks slightly fast."
-    }
-    headers = {
-        "Authorization": f"Bearer {HUGGING_FACE_API_TOKEN}",
-        "Content-Type": "application/json"
-    }
-    response = requests.post(HUGGING_FACE_AUDIO_ENDPOINT, headers=headers, data=json.dumps(payload))
-    return response
+
+    # Define the local paths for the model and configuration files
+    model_path = "en_US-lessac-medium.onnx"
+    config_path = "en_US-lessac-medium.onnx.json"
+    output_file = "output.wav"
+
+    # Run Piper-TTS using subprocess with local model and config files
+    process = subprocess.Popen([
+        "piper",
+        "--model", model_path,
+        "--config", config_path,
+        "--output_file", output_file
+    ], stdin=subprocess.PIPE, text=True)
+
+    # Pass the text to Piper through stdin
+    process.communicate(input=answer)
+
+    print(f"Speech synthesis complete. Output saved to {output_file}")
+
+    # Read the generated WAV file into a byte stream
+    with open(output_file, "rb") as f:
+        audio_data = f.read()
+
+    return audio_data
 
 # Main function
 def main():
-    st.title("Voice Recorder XX")
+    st.title("Voice Recorder 1")
     audio_bytes = audio_recorder()
     result = ""
 
@@ -81,31 +96,16 @@ def main():
         
         if 'text' in result:
             answer = get_llm_response(result['text'])
-            st.write("Groq Response:", answer)
+            st.write("LLM Response:", answer)
             
-            response = generate_audio_response(answer)
-            
-            if response.status_code == 200:
-                data = response.json()
-                audio_samples = data[0]['generated_audio']
-                
-                audio_array = np.array(audio_samples, dtype=np.float32)
-                audio_int16 = (audio_array * 32767).astype(np.int16)
-                
-                audio_buffer = io.BytesIO()
-                with wave.open(audio_buffer, 'wb') as wf:
-                    wf.setnchannels(1)
-                    wf.setsampwidth(2)
-                    wf.setframerate(44100)
-                    wf.writeframes(audio_int16.tobytes())
-                
-                audio_buffer.seek(0)
-                
+            audio_data = generate_audio_response(answer)
+
+            if audio_data:
                 st.title("Audio Playback in Streamlit")
                 st.write("Generated Audio:")
-                st.audio(audio_buffer, format='audio/wav')
+                st.audio(audio_data, format='audio/wav')
             else:
-                st.error(f"Failed with status code: {response.status_code}, {response.text}")
+                st.error("Failed to generate audio")
         else:
             st.error("No text returned from API response")
 
