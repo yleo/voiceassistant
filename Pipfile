@@ -12,6 +12,7 @@ streamlit-webrtc = "*"
 pydub = "*"
 audio-recorder-streamlit = "*"
 groq = "*"
+tts = "*"
 
 [dev-packages]
 
