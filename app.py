@@ -53,7 +53,7 @@ def get_conference_data(info_type='information_confs'):
         str: Chaîne JSON de l'information demandée sur la conférence.
     """
     # Load JSON data
-    with open('data/conference_data.json', encoding='utf-8') as f:
+    with open('conference_data.json', encoding='utf-8') as f:
         conference_data = json.load(f)
 
     if info_type == 'description':
