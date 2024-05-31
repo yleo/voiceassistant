@@ -44,7 +44,7 @@ def process_audio(audio_bytes):
     return result
 
 def get_conference_data(info_type='information_confs'):
-    """btenir une brève description de la conférence ou des informations sur le déroulement, les intervenants des différentes conférences en fonction de l'argument info_type.
+    """Obtenir une brève description de la conférence ou des informations sur le déroulement, les intervenants des différentes conférences en fonction de l'argument info_type.
 
     Args:
         info_type (str): Type d'information à récupérer ('description' ou 'information_confs').
