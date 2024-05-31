@@ -74,7 +74,7 @@ def get_llm_response(user_prompt):
     TA REPONSE FINALE DOIT ETRE COURTE, CONCISE ET EN FRANCAIS.
     '''
 
-    client = Groq()
+    client = Groq(api_key=LLM_API_KEY)
     MODEL = 'llama3-70b-8192'
 
     messages = [
