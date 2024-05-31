@@ -1,0 +1,161 @@
+{
+    "description": {
+      "Conference": "Forum et réunions sur les données et l'IA pour les entreprises",
+      "Date": "2024-06-04",
+      "Location": "Pavillon d'Armenonville, Paris - Porte Maillot",
+      "URL": "https://data-ai.hubinstitute.com",
+      "Description": "L'IA générative révolutionne notre monde. En l'espace d'un an, les entreprises, les leaders tech et le gouvernement français ont adopté cette innovation, déployant des stratégies variées. Il est désormais temps de révéler les leçons et convictions forgées à travers les succès et les défis rencontrés pour élaborer des stratégies IA gagnantes. Nos intervenants répondront à toutes vos questions lors de la session 'Le vrai enjeu de l'IA générative', en partenariat avec Emerton Data. Rencontrez des experts du secteur et partagez vos enjeux lors de cette matinée exclusive, le 4 juin 2024 au Pavillon d'Armenonville !"
+    },
+    "timeline": {
+      "Conference Title": "Agenda Track 2 | Forum et réunions sur les données et l'IA pour les entreprises",
+      "Date": "Mardi 4 juin 2024",
+      "Location": "Pavillon d'Armenonville, Paris - Porte Maillot",
+      "Track Name": "TRACK 2 x EMERTON : Le vrai enjeu de l'IA générative",
+      "Sessions": [
+        {
+          "Session Time": "09:30 - 10:30",
+          "Session Title": "Discours de bienvenue et interview spéciale 'Briser les barrières : de la recherche en IA à son application en entreprise'",
+          "Speakers": [
+            {
+              "Name": "Guillaume Avrin",
+              "Position": "Direction Générale des Entreprises, Coordinateur national pour l'intelligence artificielle"
+            },
+            {
+              "Name": "Aimé Lachapelle",
+              "Position": "Emerton Data, Managing Partner"
+            }
+          ]
+        },
+        {
+          "Session Time": "09:30 - 10:30",
+          "Session Title": "Construire la prochaine pépite : Stratégies pour l'essor des startups en IA générative",
+          "Speakers": [
+            {
+              "Name": "Vincent Rapp",
+              "Position": "Bpifrance, Responsable Sectoriel Numérique - Coordination IA - Direction de l'Innovation"
+            },
+            {
+              "Name": "Guillaume Avrin",
+              "Position": "Direction Générale des Entreprises, Coordinateur national pour l'intelligence artificielle"
+            },
+            {
+              "Name": "Pascal Simon",
+              "Position": "Kaukana Ventures, Investment Strategy"
+            },
+            {
+              "Name": "Emmanuel Papadacci-Stephanopoli",
+              "Position": "La Fabrique by CA, Chief Product Officer"
+            }
+          ]
+        },
+        {
+          "Session Time": "09:30 - 10:30",
+          "Session Title": "Ecosystème Open Source et IA Générative : Insights de Hugging Face",
+          "Speakers": [
+            {
+              "Name": "Yoach Lacombe",
+              "Position": "HuggingFace, ML Engineer"
+            }
+          ]
+        },
+        {
+          "Session Time": "09:30 - 10:30",
+          "Session Title": "Quels sont les cas d'usage d'IA Generative à prioriser pour maximiser l'impact?",
+          "Speakers": [
+            {
+              "Name": "Harriet Rees",
+              "Position": "Starling Bank, Chief Information Officer"
+            },
+            {
+              "Name": "Andreea Lachapelle",
+              "Position": "Edenred, Chief Data Officer"
+            }
+          ]
+        },
+        {
+          "Session Time": "10:30 - 11:00",
+          "Session Title": "PAUSE NETWORKING",
+          "Speakers": []
+        },
+        {
+          "Session Time": "11:00 - 12:30",
+          "Session Title": "Vers une IA plus durable et souveraine ? Exploration des Défis et Enjeux",
+          "Speakers": [
+            {
+              "Name": "Lamiae Azizi",
+              "Position": "UM6P, Professeure College of Computing"
+            },
+            {
+              "Name": "Catherine Duveau",
+              "Position": "Safran Aircraft Engines, Responsable de Département Data Science & Governance"
+            },
+            {
+              "Name": "Olivier Abecassis",
+              "Position": "Qwant, CEO"
+            }
+          ]
+        },
+        {
+          "Session Time": "11:00 - 12:30",
+          "Session Title": "Avenir du travail : demain, tous 'augmentés' avec l'IA générative ?",
+          "Speakers": [
+            {
+              "Name": "Maxime Marembaud",
+              "Position": "Sodexo, Group Chief Data & Digital Officer"
+            },
+            {
+              "Name": "Renata Alves-Santos",
+              "Position": "TotalEnergies, Deputy Chief Data Officer"
+            },
+            {
+              "Name": "Claire Lebarz",
+              "Position": "Malt, Chief Data & AI Officer"
+            }
+          ]
+        },
+        {
+          "Session Time": "11:00 - 12:30",
+          "Session Title": "L'IA générative est elle déjà un facteur de transformation profonde des banques et assurances ?",
+          "Speakers": [
+            {
+              "Name": "Maxime Havez",
+              "Position": "Crédit Mutuel Arkéa, Chief Data Officer"
+            },
+            {
+              "Name": "Ahmed Besbes",
+              "Position": "Direct Assurance, Chief Data Officer"
+            }
+          ]
+        },
+        {
+          "Session Time": "11:00 - 12:30",
+          "Session Title": "Copilotes généralistes ou IA spécialisées connectées à vos données ?",
+          "Speakers": [
+            {
+              "Name": "Victor Azria",
+              "Position": "JCDecaux, Global Data Director"
+            },
+            {
+              "Name": "Iouri Chapochnikov",
+              "Position": "Betclic Group, Chief Data Officer"
+            }
+          ]
+        },
+        {
+          "Session Time": "11:00 - 12:30",
+          "Session Title": "Comment assurer la robustesse et la conformité des IA génératives ?",
+          "Speakers": [
+            {
+              "Name": "Marcin Detyniecki",
+              "Position": "AXA, Group Chief Data Scientist & Head of R&D"
+            },
+            {
+              "Name": "Jean-Marie John-Mathews",
+              "Position": "Giskard AI, AI Ethics Researcher & Co-founder"
+            }
+          ]
+        }
+      ]
+    }
+  }
+  
